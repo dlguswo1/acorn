@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script>
+	let httpRequest = null;
+	
+	function fnSubmit(){
+		httpRequest = new XMLHttpRequest();
+		// 객체 생성
+		
+		httpRequest.open("GET" , "basic04.jsp", true);
+		// 서버와 연결하기 위한 함수
+		// 요청방식 , 연결파일,
+		httpRequest.onreadystatechange = fnCallback;
+		// 서버와 연결이 되면 어떤일을 할 것인지 동작할 것이기 때문에 함수를 적어줌
+		httpRequest.send(null);
+		// 실제로 보내는 함수
+	}
+	
+	let msg = null;
+	
+	function fnCallback(){
+		if(httpRequest.readyState == 4){
+			// 서버로부터 데이터를 전부 받은 상태
+			if(httpRequest.status == 200){
+				// 200 : OK
+				let txtDoc = eval("(" + httpRequest.responseText + ")");
+				
+				if(txtDoc.code == "success"){
+					let mem = txtDoc.data.member;
+					alert(mem.name + ", " + mem.id + ", " + mem.age);
+					
+				}
+				
+			} else{
+				alert("무언가 잘못 되었음 : " + httpRequest.status);
+			}
+		}
+	}
+	window.onload = function(){
+		fnSubmit();
+	}
+</script>
+<body>
+	<h1>서버로부터 JSON타입의 데이터를 받는 예제</h1>
+</body>
+</html>

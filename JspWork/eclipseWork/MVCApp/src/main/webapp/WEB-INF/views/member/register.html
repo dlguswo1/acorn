@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>회원 가입</h1>
+	<form method="post" action="/MVCApp/mem">
+		<input type="hidden" name="command" value="CONFIRM" />
+		<!-- action 뒤에 주소 노출을 시키지 않고 숨김 -->
+		<!-- 정보를 확인 시켜달라는 요청 -->
+		
+		아이디 : <input type="text" name="id"/><br><br>
+		패스워드 : <input type="password" name="pw"/><br><br>
+		이메일 : <input type="email" name="email"/><br><br>
+		<input type="submit" value="가입" />
+	</form>
+</body>
+</html>

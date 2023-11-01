@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>여기는 index.html이다.</h1>
+	
+	<h3>Get방식</h3>
+	<form action="http://localhost:9999/ServletTest3/test1">
+			 <!-- http://localhost:9999 생략가능 -->
+		이름 : <input type="text" name="name"><br><br>
+		나이 : <input type="text" name="age"><br><br>
+		<input type="submit" value="서버로 전송"/> <!-- 트리거 역활의 버튼 -->
+	</form>
+	<hr/>
+	<h3>Post방식</h3>
+	<form action="/ServletTest3/test1" method="post">
+			 <!-- http://localhost:9999 생략가능 -->
+		이름 : <input type="text" name="name"><br><br>
+		나이 : <input type="text" name="age"><br><br>
+		<input type="submit" value="서버로 전송"/> <!-- 트리거 역활의 버튼 -->
+	</form>
+</body>
+</html>

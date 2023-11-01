@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	let httpRequest = null;
+	
+	function fnSubmit(){
+		httpRequest = new XMLHttpRequest();
+		// 객체 생성
+		
+		httpRequest.open("GET" , "basic03.jsp", true);
+		// 서버와 연결하기 위한 함수
+		// 요청방식 , 연결파일,
+		httpRequest.onreadystatechange = fnCallback;
+		// 서버와 연결이 되면 어떤일을 할 것인지 동작할 것이기 때문에 함수를 적어줌
+		httpRequest.send(null);
+		// 실제로 보내는 함수
+	}
+	
+	let msg = null;
+	function fnCallback(){
+		if(httpRequest.readyState == 4){
+			// 서버로부터 데이터를 전부 받은 상태
+			if(httpRequest.status == 200){
+				// 200 : OK
+				let xmlDoc = httpRequest.responseXML;
+				let books = xmlDoc.getElementsByTagName("book");
+				let msg = "책 권수 :" + books.length + "권<br>";
+			
+				for(let i = 0; i<books.length; i++){
+					let book = books.item(i);
+					let title = book.getElementsByTagName("title").item(0).firstChild.nodeValue;
+					<!--책 제목들만 뽑기-->
+					let author = book.getElementsByTagName("author").item(0).firstChild.nodeValue;
+					
+					msg += title + "(" + author + ")<br>";
+				}
+				
+				document.getElementById("bookList").innerHTML = msg;
+			
+					
+			}
+			else{
+				alert("무언가 잘못 되었음 : " + httpRequest.status)
+			}
+		}
+	}
+	window.onload = function(){
+		fnSubmit();
+	}
+</script>
+</head>
+<body>
+	<h2>책 정보</h2>
+	<div id="bookList"></div>
+</body>
+</html>
