@@ -1,0 +1,26 @@
+
+<project default="run">
+	<target name="compile">
+	
+	<!-- make directory 폴더 만들기 -->
+		<javac srcdir="./src" destdir="./bin"></javac>
+	</target>
+	
+	<target name="run" depends="compile">
+	<!-- depends : 이걸 실행하기전에 뭐부터 실행해라 -->
+		<java classname="Thistest">
+			<classpath>
+				<pathelement path="./bin"/>
+			</classpath>
+		</java>
+	</target>
+</project>
+
+
+
+<!-- 
+	javac -d ./bin ./src/컴파일 할 파일명.java
+	src에 있는 파일을 bin에서 컴파일 한다.
+	java -cp ./bin 파일명
+	bin폴더에 파일명을 지정함
+-->

@@ -1,0 +1,6 @@
+// 1차월 배열을 이용한 성적표
+public class Sungjuk_v1{
+	public static void main(String[] args){
+		
+	}
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project default="run">
+	<target name="compile">
+	<mkdir  dir="./bin" />
+	<!-- make directory 폴더 만들기 -->
+		<javac srcdir="./src" destdir="./bin" encoding="utf-8"></javac>
+	</target>
+	
+	<target name="run" depends="compile">
+	<!-- depends : 이걸 실행하기전에 뭐부터 실행해라 -->
+		<java classname="Encode">
+			<classpath>
+				<pathelement path="./bin"/>
+			</classpath>
+		</java>
+	</target>
+</project>
